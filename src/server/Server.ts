@@ -1,10 +1,18 @@
-import express from 'express'
+// o sistema não está reconhesendo do "import express" no lugar ele reconheceu o "import type from 'express'"
+//  outro mode usar o expree é "import e  = require('express')"
 
-const server = express()
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import type from 'express';
+import { Request, Response } from 'express';
 
-server.get('/', (req, res) => {
-  return res.send('Hello word!')
-})
+
+const server = type();
 
 
-export { server }
+server.get('/', (req:Request, res:Response) => {
+  return res.send('Hello word!');
+});
+
+
+export { server };
