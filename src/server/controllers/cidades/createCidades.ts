@@ -16,5 +16,5 @@ export const createCidades = async (req:Request<{}, {}, ICidadesRequestDTO>, res
 
   console.log(req.body);
 
-  return res.send('create!');
+  return res.status(200).send('Não implementado!');
 };
