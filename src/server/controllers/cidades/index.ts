@@ -1,8 +1,11 @@
-import * as controllers from './createCidades';
-import { validations } from './validations';
+import * as validations from './validations';
+import { createCidades as create } from './createCidades';
+import { getAllCidades as getAll } from './getAllCidades';
+
 
 export const cidadesController = {
-  ...controllers,
   // isValid: validations
-  validations
+  ...validations,
+  create,
+  getAll,
 };

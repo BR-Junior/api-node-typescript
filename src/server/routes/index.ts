@@ -8,13 +8,9 @@ router.get('/', (req:Request, res:Response) => {
   return res.status(200).send('Hello word!');
 });
 
-router.post(
-  '/cidades',
-  // cidadesController.createBodyValidator,
-  // validations,
-  cidadesController.validations,
-  cidadesController.createCidades
-);
+router.get('/cidades',cidadesController.validationQuery,cidadesController.getAll);
+
+router.post('/cidades',cidadesController.validationCreate,cidadesController.create);
 
 router.post('/params/:id', (req:Request, res:Response) => {
   return res.status(200).json(req.params.id);
