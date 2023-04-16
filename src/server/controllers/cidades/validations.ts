@@ -1,12 +1,12 @@
 import * as yup from 'yup';
-import { ICidadesDTO, IQueryProps } from './ICidadesDTO';
+import {ICidadesRequestDTO,  IQueryProps} from './ICidadesDTO';
 import { validation } from '../../shared/volidationBase';
 
 
 
 
 // validação do body request
-const bodySchema: yup.ObjectSchema<ICidadesDTO> = yup.object().shape({
+const bodySchema: yup.ObjectSchema<ICidadesRequestDTO> = yup.object().shape({
   id: yup.string().optional(),
   name: yup.string()
     .required('compo obrigatorio')
@@ -28,6 +28,38 @@ const querySchema: yup.ObjectSchema<IQueryProps> = yup.object().shape({
     .notRequired(),
 });
 export const validationQuery = validation('query', querySchema);
+
+// validação do params
+interface IParams {
+  id: number
+}
+const getByIdSchema: yup.ObjectSchema<IParams> = yup.object().shape({
+  id: yup.number()
+    .required('compo obrigatorio')
+    .integer()
+    .moreThan(0, 'page deve ser maior 0'),
+});
+export const validationGetById = validation('params', getByIdSchema);
+
+// validação do params e body
+const UpdateByIdParamsSchema: yup.ObjectSchema<IParams> = yup.object().shape({
+  id: yup.number()
+    .required('compo obrigatorio')
+    .integer()
+    .moreThan(0, 'page deve ser maior 0'),
+});
+const UpdateByIdBodySchema: yup.ObjectSchema<ICidadesRequestDTO> = yup.object().shape({
+  id: yup.string()
+    .optional(),
+  name: yup.string()
+    .required('compo obrigatorio')
+    .min(3, 'tamanho minimo de 3 caracteres')
+});
+export const validationUpdateByIdParams = validation('params', UpdateByIdParamsSchema);
+export const validationUpdateByIdBody = validation('body', UpdateByIdBodySchema);
+
+
+
 
 
 // o Partial<> do torna os campos não obrigatorios

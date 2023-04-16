@@ -9,9 +9,10 @@ export interface ICidadesRequestDTO {
 }
 
 export interface ICidadesResponseDTO {
- id?: string
+ id?: number
  name: string
 }
+
 
 export interface IQueryProps {
  page?: number | null

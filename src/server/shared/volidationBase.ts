@@ -1,11 +1,11 @@
 import { ObjectSchema, ValidationError } from 'yup';
 import { RequestHandler } from 'express';
 
-type TValidations = (field: 'body' | 'header' | 'params' | 'query', scheme: ObjectSchema<any>) => RequestHandler
+type TValidations = (field: 'body' | 'header' | 'params' | 'query', schemas: ObjectSchema<any>) => RequestHandler
 
-export const validation: TValidations = (field, scheme) => async (req, res, next) => {
+export const validation: TValidations = (field, schemas) => async (req, res, next) => {
   try {
-    await scheme.validate(req[field], { abortEarly: false });
+    await schemas.validate(req[field], { abortEarly: false });
     return next();
 
   }catch (err) {
