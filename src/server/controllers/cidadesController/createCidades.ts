@@ -11,7 +11,6 @@ import { ICidadesRequestDTO } from './ICidadesDTO';
 
 export const createCidades = async (req:Request<{}, {}, ICidadesRequestDTO>, res:Response) => {
 
-
   // validations(req.body);
 
   console.log(req.body);
