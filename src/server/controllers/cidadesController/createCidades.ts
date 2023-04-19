@@ -17,12 +17,19 @@ export const createCidades = async (req:Request<{}, {}, ICidadesRequestDTO>, res
   // validations(req.body);
   const newCidade = req.body;
 
+
   const find = await cidadesRepository.findOneBy({name: newCidade.name});
 
 
   if (find?.name == newCidade.name) {
 
-    return res.status(400).json('cidade já existe');
+    return res.status(400).json({
+      errors: {
+        body: {
+          name: Error('cidade já existe').message
+        }
+      }
+    });
 
   }else {
 

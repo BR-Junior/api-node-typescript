@@ -2,7 +2,7 @@ import { ICidadesRequestDTO } from '../../DTO/ICidadesDTO/ICidadesDTO';
 import { cidadesRepository } from '../../repositories/cidadesRepository/cidadesRepository';
 
 
-export const cidadeServiceCreate = async (cidades: Omit<ICidadesRequestDTO, 'id'>): Promise<number | Error> => {
+export const cidadeServiceCreate = async (cidades: Omit<ICidadesRequestDTO, 'id'>): Promise<number | string | Error> => {
 
   try {
 
@@ -13,9 +13,10 @@ export const cidadeServiceCreate = async (cidades: Omit<ICidadesRequestDTO, 'id'
     return newCidade.id as number;
 
   }catch (err) {
+
     console.log(err);
 
-    return Error('Erro ao cadastrar o registro!');
+    return Error('Erro ao cadastrar o registro!').message ;
   }
 
 };
