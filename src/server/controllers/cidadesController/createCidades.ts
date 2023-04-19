@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import { ICidadesRequestDTO } from './ICidadesDTO';
+import { cidadeServiceCreate } from '../../services/cidadesServices/cidadeServiceCreate';
 
 
 
@@ -9,11 +10,13 @@ import { ICidadesRequestDTO } from './ICidadesDTO';
 //
 // };
 
+
 export const createCidades = async (req:Request<{}, {}, ICidadesRequestDTO>, res:Response) => {
 
   // validations(req.body);
+  const newCidade = req.body;
 
-  console.log(req.body);
+  const cidade = await cidadeServiceCreate(newCidade);
 
-  return res.status(200).send('Não implementado!');
+  return res.status(200).json(cidade);
 };

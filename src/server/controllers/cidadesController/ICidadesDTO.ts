@@ -1,6 +1,6 @@
 
 export interface ICidadesDTO {
- id?: string
+ id?: number | null
  name: string
 }
 export interface ICidadesRequestDTO {
