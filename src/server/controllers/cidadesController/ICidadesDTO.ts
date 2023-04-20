@@ -1,7 +1,9 @@
+import {Pessoa} from '../../models';
 
 export interface ICidadesDTO {
  id?: number | null
  name: string
+ pessoas: Pessoa[]
 }
 export interface ICidadesRequestDTO {
  id?: string

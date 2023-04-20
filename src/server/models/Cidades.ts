@@ -1,5 +1,6 @@
-import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
+import {Column, Entity, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
 import {ICidadesDTO} from '../controllers/cidadesController/ICidadesDTO';
+import { Pessoa } from './Pessoa';
 
 
 
@@ -10,4 +11,7 @@ export class Cidade implements ICidadesDTO{
 
   @Column({ type: 'text' })
     name: string;
+
+@OneToMany(() => Pessoa, pessoa => pessoa.cidade)
+  pessoas: Pessoa[];
 }
