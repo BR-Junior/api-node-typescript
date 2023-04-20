@@ -15,7 +15,6 @@ export interface ICidadesResponseDTO {
 
 
 export interface IQueryProps {
- page?: number | null
+  page?: number | null
  limit?: number | null
- filter?: string | null
-}
+ }

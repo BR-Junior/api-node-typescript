@@ -2,7 +2,7 @@ import { ICidadesRequestDTO } from '../../DTO/ICidadesDTO/ICidadesDTO';
 import { cidadesRepository } from '../../repositories/cidadesRepository/cidadesRepository';
 
 
-export const cidadeServiceCreate = async (cidades: Omit<ICidadesRequestDTO, 'id'>): Promise<number | string | Error> => {
+export const cidadeServiceCreate = async (cidades: Omit<ICidadesRequestDTO, 'id'>): Promise<number | string > => {
 
   try {
 

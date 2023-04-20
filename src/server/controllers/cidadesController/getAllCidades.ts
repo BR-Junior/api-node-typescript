@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import { IQueryProps } from './ICidadesDTO';
+import { cidadeServiceGetAll } from '../../services/cidadesServices/cidadeServiceGetAll';
 
 
 
@@ -12,9 +13,11 @@ import { IQueryProps } from './ICidadesDTO';
 export const getAllCidades  = async (req:Request<{}, {}, {}, IQueryProps>, res:Response) => {
 
 
+  const result = await cidadeServiceGetAll(req.query.page || 1, req.query.limit || 10);
+
   // validations(req.body);
 
-  console.log(req.query);
+  console.log(result);
 
-  return res.status(200).send('Não implementado!');
+  return res.status(200).json(result);
 };

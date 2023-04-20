@@ -10,7 +10,7 @@ router.get('/', (req:Request, res:Response) => {
 });
 
 // Retomar aqui API Rest, Node e Typescript: #15 - Setup completo do Jest com NodeJS e Typescript
-router.get('/cidades',cidadesMiddleware.getAll,cidadesController.getAll);
+router.get('/cidades/',cidadesMiddleware.getAll,cidadesController.getAll);
 router.get('/cidades/:id',cidadesMiddleware.getOne,cidadesController.getById);
 router.post('/cidades',cidadesMiddleware.create,cidadesController.create);
 router.put('/cidades/:id',cidadesMiddleware.update,cidadesController.updateById);

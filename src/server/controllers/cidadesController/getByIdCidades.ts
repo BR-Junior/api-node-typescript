@@ -1,11 +1,13 @@
 import {Request, Response} from 'express';
+import {cidadeServiceGetOne} from '../../services/cidadesServices/cidadeServiceGetOne';
 
 interface IParams {
-  id?: string
+  id?: string | null
 }
 export const getByIdCidades = async (req:Request<IParams, {}, {}>, res:Response) => {
+  const result = await cidadeServiceGetOne(Number(req.params.id));
 
-  console.log(req.params);
+  console.log(result);
 
-  return res.status(200).send('Não implementado!');
+  return res.status(200).json(result);
 };
