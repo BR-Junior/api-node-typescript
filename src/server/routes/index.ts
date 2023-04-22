@@ -1,6 +1,5 @@
 import {Request, Response, Router} from 'express';
-import { cidadesController } from '../controllers';
-import { cidadesMiddleware } from '../shared/middlewares';
+import { cidadeController, cidadeValidation } from  '../cidade/index';
 
 
 const router = Router();
@@ -10,11 +9,11 @@ router.get('/', (req:Request, res:Response) => {
 });
 
 // Retomar aqui API Rest, Node e Typescript: #15 - Setup completo do Jest com NodeJS e Typescript
-router.get('/cidades/',cidadesMiddleware.getAll,cidadesController.getAll);
-router.get('/cidades/:id',cidadesMiddleware.getOne,cidadesController.getById);
-router.post('/cidades',cidadesMiddleware.create,cidadesController.create);
-router.put('/cidades/:id',cidadesMiddleware.update,cidadesController.updateById);
-router.delete('/cidades/:id',cidadesMiddleware.deleteOne ,cidadesController.deete);
+router.post('/cidades',cidadeValidation.cidadeCreate,cidadeController.cidadeCreate);
+router.get('/cidades/', cidadeValidation.cidadeFindAll, cidadeController.cidadeFindAll,);
+router.get('/cidades/:id',cidadeValidation.cidadeFindOne,cidadeController.cidadeFindOne);
+router.put('/cidades/:id',cidadeValidation.cidadeUpdate,cidadeController.cidadeUpdate);
+router.delete('/cidades/:id',cidadeValidation.cidadeDelete ,cidadeController.cidadeDelete);
 
 
 
