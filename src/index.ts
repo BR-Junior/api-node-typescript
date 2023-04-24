@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { server } from './server/Server';
+import { server } from './Server';
 import {typeormConfig} from './typeormConfig';
 
 
