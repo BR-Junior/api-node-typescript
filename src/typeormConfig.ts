@@ -13,6 +13,6 @@ export const typeormConfig = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  entities: [`${__dirname}/**/server/models/*.{ts,js}`],
-  migrations: [`${__dirname}/**/server/models/migrations/*.{ts,js}`]
+  entities: [`${__dirname}/**/database/*.{ts,js}`],
+  migrations: [`${__dirname}/**/database/migrations/*.{ts,js}`]
 });
