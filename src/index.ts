@@ -4,11 +4,18 @@ import {typeormConfig} from './typeormConfig';
 
 
 
-
-typeormConfig.initialize().then(() => {
+const main = async ():Promise<void> => {
+  await typeormConfig.initialize();
   console.log('Banco de dados rodando');
 
-  server.listen(process.env.Port || 3333, () =>
-    console.log(`App rodando na porta ${process.env.PORT || 3333}`));
-
-});
+  server.listen(process.env.Port || 3333);
+  console.log(`App rodando na porta ${process.env.PORT || 3333}`);
+};
+main();
+// typeormConfig.initialize().then(() => {
+//   console.log('Banco de dados rodando');
+//
+//   server.listen(process.env.Port || 3333, () =>
+//     console.log(`App rodando na porta ${process.env.PORT || 3333}`));
+//
+// });

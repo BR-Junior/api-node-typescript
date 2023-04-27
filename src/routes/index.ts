@@ -17,7 +17,10 @@ router.put('/cidades/:id',cidadeValidation.cidadeUpdate,cidadeController.cidadeU
 router.delete('/cidades/:id',cidadeValidation.cidadeDelete ,cidadeController.cidadeDelete);
 
 router.post('/pessoa', pessoaControllers.pessoaCreate);
-
+router.delete('/pessoa/:id',pessoaControllers.pessoaDelete);
+router.get('/pessoa/',pessoaControllers.pessoaFindAll);
+router.get('/pessoa/:id',pessoaControllers.pessoaFindOne);
+router.put('/pessoa/:id',pessoaControllers.pessoaUpdate);
 
 
 
