@@ -1,12 +1,12 @@
-import { cidadesRepository } from '../../../database/repositories/cidadeRepository';
-import {ICidadesRequestDTO} from '../../../DTO/ICidadesDTO/ICidadesDTO';
+import { pessoasRepository } from '../../../database/repositories/pessoaRepository';
+import {IPessoaUpdateDTO} from '../DTO/IPessoaDTO';
 
-
-export const pessoaUseCaseUpdate = async (id: number, cidade:Omit<ICidadesRequestDTO, 'id'>): Promise<void | Error > => {
+// Omit<IPessoaDTO, 'id'>
+export const pessoaUseCaseUpdate = async (id: number, cidade:IPessoaUpdateDTO): Promise<void | Error > => {
 
   try {
 
-    await cidadesRepository.update(id, cidade);
+    await pessoasRepository.update(id, cidade);
 
   }catch (err) {
 
