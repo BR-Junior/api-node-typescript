@@ -1,10 +1,10 @@
-import { cidadesRepository } from '../../../database/repositories/cidadeRepository';
+import {pessoasRepository} from '../../../database/repositories/pessoaRepository';
 
 
 export const pessoaUseCaseDelete = async (id:number): Promise<void | string > => {
 
   try {
-    const result = cidadesRepository.delete(id);
+    const result = pessoasRepository.delete(id);
 
     if (result) result;
 
