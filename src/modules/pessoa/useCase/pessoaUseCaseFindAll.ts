@@ -1,11 +1,11 @@
-import { cidadesRepository } from '../../../database/repositories/cidadeRepository';
-import { ICidadeDTO } from '../DTO/ICidadesDTO';
+import {pessoasRepository} from '../../../database/repositories/pessoaRepository';
+import { IPessoaFindDTO } from '../DTO/IPessoaDTO';
 
-export const pessoaUseCaseFindAll = async (page:number, limit:number): Promise<ICidadeDTO[] | Error > => {
+export const pessoaUseCaseFindAll = async (page:number, limit:number): Promise<IPessoaFindDTO[] | Error > => {
 
   try {
-    const result = await cidadesRepository.find({
-      select: {name:true, id:true},
+    const result = await pessoasRepository.find({
+      relations: {cidade:true},
       order: {id: 'asc'},
       skip: (page -1) * limit,
       take: limit
