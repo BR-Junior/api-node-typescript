@@ -1,10 +1,13 @@
-import { cidadesRepository } from '../../../database/repositories/cidadeRepository';
-import { ICidadeDTO } from '../DTO/ICidadesDTO';
+import { pessoasRepository } from '../../../database/repositories/pessoaRepository';
+import { IPessoaFindDTO } from '../DTO/IPessoaDTO';
 
-export const pessoaUseCaseFindOne = async (id:number): Promise<ICidadeDTO | Error > => {
+export const pessoaUseCaseFindOne = async (id:number): Promise<IPessoaFindDTO | Error > => {
 
   try {
-    const result = await cidadesRepository.findOneBy({id:id});
+    const result = await pessoasRepository.findOne({
+      where:{id:id},
+      relations:{cidade:true}
+    });
 
     if (result) return result;
 
